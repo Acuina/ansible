@@ -1,0 +1,9 @@
+<VirtualHost *:{{ webapp_port }}>
+   DocumentRoot "{{ webapp_document_root }}"
+   <Directory "{{ webapp_document_root }}">
+       AllowOverride All
+       Require all granted
+   </Directory>
+   ErrorLog /var/log/httpd/error.log
+   CustomLog /var/log/httpd/access.log combined
+</VirtualHost>

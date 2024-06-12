@@ -1,0 +1,8 @@
+---
+ - name: Redémarrer Apache
+   service:
+     name: httpd
+     state: restarted
+
+
+# handlers file for adm_webapp

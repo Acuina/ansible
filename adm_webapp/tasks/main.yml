@@ -1,0 +1,29 @@
+---
+- name: Installation des paquets
+  yum:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - httpd
+    - php
+    - php-mysql
+
+- name: Déployer les paquets
+  copy:
+    src: ~/mini_projet_ansible/adm_webapp
+    dest: "{{ webapp_document_root  }}"
+    owner: apache
+    group: apache
+    mode: '0755'
+
+-name: Configurer apache pour la webapp
+ template:
+   src: webapp.conf.j2
+   dest: /etc/httpd/conf.d/webapp.conf
+ notify: Redémarrer Apache
+
+-name: Activer le site
+ command: systemctl enable httpd
+ notify: redémarrer Apache
+
+# tasks file for adm_webapp

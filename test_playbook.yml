@@ -1,0 +1,11 @@
+ - hosts: localhost
+   roles:
+     - adm_webapp
+   tasks:
+     - name: Vérifier que apache est installé
+     command: https -v
+     register: apache_version
+
+
+     - debug:
+         var: apache_version

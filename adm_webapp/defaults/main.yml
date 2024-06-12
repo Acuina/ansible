@@ -1,0 +1,4 @@
+webapp_port: 80
+webapp_document_root: /var/www/html/app
+---
+# defaults file for adm_webapp
